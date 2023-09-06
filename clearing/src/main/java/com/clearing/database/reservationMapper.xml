@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.reservationMapper">
+	<select id="selectdetailList" resultType="Using">
+		SELECT * FROM TBL_USING WHERE USER_EMAIL = #{user_email}
+	</select>
+	
+	<delete id="deleteReservation" parameterType="Using">
+		DELETE FROM TBL_USING WHERE USING_SEQ = #{USING_SEQ}
+	</delete>
+</mapper>

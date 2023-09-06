@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
+body {
+	font-family: 'gmarket';
+}
+
+.mainForm {
+	background-color: white;
+	border-radius: 20px;
+	padding: 5%;
+}
+
+.currentstore {
+	position: absolute;
+	margin-bottom: 5%;
+	top: 30%;
+	left: 12%;
+}
+
+.res_current {
+	margin-bottom: 45%;
+}
+
+.storename {
+	position: absolute;
+	top: 26%;
+	left: 32%;
+}
+
+.reservation-input {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 10%;
+	top: 35%;
+}
+
+.form-select {
+	width: 160px;
+	text-align: center;
+	border-color: #7CB8EB;
+}
+
+.date-select {
+	width: 198px;
+	margin-right: 15%;
+	text-align: center;
+}
+
+#calendarForm {
+	width: 210px;
+	height: 50px;
+}
+
+.res-btn {
+	color: white;
+	border: 2px solid #4f83d1;
+	border-radius: 5px;
+	height: 80px;
+	width: 71px;
+	font-size: 15px;
+	background-color: #7CB8EB;
+	text-align: center;
+}
+
+.laundry-form {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+    top: 35%;
+    left: 54%;
+
+}
+
+.laundry-group {
+	margin-bottom: 4%;
+}
+
+.res-complete-btn {
+	display: flex;
+	position: absolute;
+	left: 36%;
+	top: 83%;
+}
+
+.res-complete {
+	width: 155px;
+	height: 50px;
+	margin-right: 50px;
+}
+
+.back {
+	width: 150px;
+	height: 52px;
+}

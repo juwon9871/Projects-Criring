@@ -1,0 +1,57 @@
+
+
+.background-slider {
+    z-index:-99999;
+    opacity: 0.5;
+}
+
+.sign-btn{
+    border: none;
+    background-color: var(--primary-color);
+    padding: 0;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 130px;
+    height: 30px;
+}
+
+main.loginform {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 400px;
+    text-align: left;
+    margin: auto;
+    background-color: rgba(197, 212, 240,0.4);
+    border-radius: 10px;
+
+}
+
+.input-info {
+    margin-bottom: 10px;
+}
+
+
+.form-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 991px) {
+	main {
+		width: 375px;
+		height: 680px;
+	}
+	main.loginform {
+		position: absolute;
+		top: 30%;
+		left: 10%;
+		width: 300px;
+		height: auto;
+		padding: 10px;
+	}
+	
+}
+
+
+

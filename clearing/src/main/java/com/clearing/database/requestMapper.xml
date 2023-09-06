@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.requestMapper">
+
+	<!-- 문의게시판 셀렉트 -->
+	<select id="request_cnt" parameterType="request_Board" resultType="request_Board">
+		select count(*) from tbl_request
+	</select>
+	
+	<select id="selectAllrequest" parameterType="request_Board" resultType="request_Board">
+		select * from tbl_request order by req_seq desc
+	</select>
+	
+	<select id="select_req" parameterType="request_Board" resultType="request_Board">
+		select * from tbl_request where req_seq = #{req_seq}
+	</select>
+	
+	<!-- 
+	오라클 부적합한 열유형 null 처리 위해
+	null 들어가도 되는 컬럼에 jdbcType=VARCHAR 삽입
+	 -->
+	<insert id="insert_req" parameterType="request_Board">
+		insert into tbl_request (req_seq, req_title, req_content, req_file, req_dt, req_email, req_type) 
+		values (TBL_REQUEST_SEQ.nextval, #{req_title}, #{req_content, jdbcType=VARCHAR}, #{req_file, jdbcType=VARCHAR}, sysdate, #{req_email}, 'N')
+	</insert>
+	
+	<update id="update_reqTypeY" parameterType="request_Board">
+		update tbl_request set req_type = 'Y' where req_seq = #{req_seq}
+	</update>
+	
+	<update id="update_reqTypeN" parameterType="request_Board">
+		update tbl_request set req_type = 'N' where req_seq = #{req_seq}
+	</update>
+	
+	<update id="update_req" parameterType="request_Board">
+		update tbl_request set req_title = #{req_title}, req_content = #{req_content, jdbcType=VARCHAR}, req_file = #{req_file, jdbcType=VARCHAR} where req_seq = #{req_seq}
+	</update>
+	
+	<delete id="delete_req" parameterType="request_Board">
+		delete from tbl_request where req_seq = #{req_seq}
+	</delete>
+	
+	
+</mapper>

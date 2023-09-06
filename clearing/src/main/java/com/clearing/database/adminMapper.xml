@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.adminMapper">
+	<!-- 리뷰관련 sql문 -->
+	<delete id="delete_review" parameterType="admin_review">
+		delete from tbl_review where review_seq = #{review_seq}
+	</delete>
+	
+	<select id="selectAll_review" parameterType="admin_review" resultType="admin_review">
+		select * from tbl_review
+	</select>
+	
+	<select id="select_review" parameterType="admin_review" resultType="admin_review">
+		select * from tbl_review where store_email = #{store_email} and user_email = #{user_email}
+	</select>
+	
+	<!-- 답글관련 sql문 -->
+	<insert id="insert_reply" parameterType="admin_reply">
+		INSERT INTO tbl_reply (reply_seq, req_seq, reply_content, reply_photo, reply_dt, admin_id) 
+		VALUES (tbl_reply_seq.nextval, #{req_seq}, #{reply_content}, #{reply_photo, jdbcType=VARCHAR}, sysdate, #{admin_id})
+	</insert>
+	
+	<update id="update_reply" parameterType="admin_reply">
+		update tbl_reply set reply_content = #{reply_content}, reply_photo = #{reply_photo, jdbcType=VARCHAR} where reply_seq = #{reply_seq}
+	</update>
+	
+	<delete id="delete_reply" parameterType="admin_reply">
+		delete from tbl_reply where reply_seq = #{reply_seq}
+	</delete>
+	
+	<select id="select_reply" parameterType="admin_reply" resultType="admin_reply">
+		select * from tbl_reply where req_seq = #{req_seq}
+	</select>
+	
+	<select id="selectAll_reply" parameterType="admin_reply" resultType="admin_reply">
+		select * from tbl_reply
+	</select>
+	
+</mapper>

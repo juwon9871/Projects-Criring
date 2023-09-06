@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.ReviewMapper">
+
+	<select id="selStoreData" parameterType="Store"
+		resultType="Store">
+		select store_name, store_tel, store_addr, store_email from TBL_STORE where
+		lat=#{LAT} and lng=#{LNG}
+	</select>
+
+	<select id="selReviewData" parameterType="Review"
+		resultType="Review">
+		select store_email, review_content, review_dt, user_email, review_shares,
+		review_rating, review_photo FROM tbl_review where
+		store_email=#{store_email}
+	</select>
+
+
+	<insert id="insReviewData" parameterType="Review">
+		insert into tbl_review (store_email, review_content, review_dt, user_email, review_rating, review_photo) values (#{store_email},#{review_content}, sysdate,
+		#{user_email}, #{review_rating},#{review_photo})			
+	</insert>
+
+	<delete id="delReviewData"	parameterType="Review">
+		delete from tbl_review where review_SEQ = #{review_SEQ}
+	</delete>
+	
+	<select id="userReviewData" resultType="Review">
+		select * from tbl_review where user_email = #{user_email}
+	
+	</select>	
+	
+	<select id="selReviewStoreName" resultType="Store">
+		select store_name from tbl_store a, tbl_review b where a.store_email = b.store_email
+	</select>
+	
+	<select id="selNoReview" resultType="StoreUse">
+		SELECT A.store_name FROM  tbl_store A left OUTER JOIN  tbl_review B ON  A.store_email = B.store_email where review_seq is null
+	</select>
+	
+	<select id ="selReviewNum" resultType="StoreUse">
+		select a.store_name,cnt from tbl_store a right outer join store_review_cnt b on a.store_email=b.store_email order by cnt desc
+	</select>
+	
+	<select id="selAll" resultType="StoreUse">
+		select a.store_name,a.store_email from tbl_store a right outer join store_review_cnt b on a.store_email=b.store_email order by cnt desc
+	</select>
+</mapper>

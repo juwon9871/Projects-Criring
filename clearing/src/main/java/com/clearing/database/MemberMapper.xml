@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.MemberMapper">
+	<insert id="joinMember" parameterType="Member">
+		INSERT INTO
+		TBL_MEMBER(MB_EMAIL, MB_PW,MB_NAME,MB_ADDR, LAT, LNG)
+		VALUES(#{MB_EMAIL}, #{MB_PW}, #{MB_NAME}, #{MB_ADDR} , #{LAT}, #{LNG})
+	</insert>
+
+	<insert id="joinStore" parameterType="Store">
+		INSERT INTO TBL_STORE
+		VALUES(#{STORE_EMAIL}, #{STORE_PW}, #{STORE_NAME},
+		#{STORE_ADDR},
+		#{STORE_TEL}, #{LAUNDRY_CNT}, #{DRYER_CNT}, #{LAT},
+		#{LNG})
+	</insert>
+
+	<insert id="registLaundry" parameterType="Laundry">
+		INSERT INTO TBL_LAUNDRY
+		VALUES(tbl_laundry_SEQ.NEXTVAL, #{laundry_name}, #{store_email},
+		#{store_user}, #{SERIAL_NO})
+	</insert>
+
+	<select id="loginChk" parameterType="Member" resultType="Member">
+		SELECT *
+		FROM TBL_MEMBER WHERE MB_EMAIL=#{MB_EMAIL} AND MB_PW=#{MB_PW}
+	</select>
+
+	<select id="storeLoginChk" parameterType="Store"
+		resultType="Store">
+		SELECT * FROM TBL_STORE WHERE STORE_EMAIL = #{STORE_EMAIL}
+		AND STORE_PW = #{STORE_PW}
+	</select>
+
+	<select id="loginCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) FROM TBL_MEMBER WHERE mb_email=#{MB_EMAIL} AND
+		mb_pw=#{MB_PW}
+	</select>
+
+	<update id="updateMember" parameterType="Member">
+		UPDATE TBL_MEMBER SET
+		MB_PW = #{MB_PW}, MB_ADDR = #{MB_ADDR},LAT = #{LAT}, LNG=#{LNG} WHERE
+		MB_EMAIL = #{MB_EMAIL}
+	</update>
+	
+	<select id="selLocation" resultType="StoreUse">
+		select lat,lng from tbl_store where store_name=#{store_name}
+	</select>
+	<select id="Dchk" resultType="int">
+	SELECT COUNT(*) FROM tbl_member WHERE mb_email = #{MB_EMAIL} AND ROWNUM = 1
+	</select>
+</mapper>

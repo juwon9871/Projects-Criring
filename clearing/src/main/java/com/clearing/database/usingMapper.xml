@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.usingMapper">
+	
+	<select id="used" resultType="Using">
+		select * from tbl_using where pay_yn='y' and using_dt = to_char(sysdate,'yy/mm/dd') and start_time=#{start_time}
+	</select>
+	<select id="used2" resultType="Using">
+		select * from tbl_using where pay_yn='y' and using_dt = #{using_dt} and start_time=#{start_time}
+	</select>
+	<insert id="insert" parameterType="Using">
+		insert into tbl_using(laundry_seq,user_email,start_time,end_time,using_dt,pay_amount,pay_yn,store_name) values(#{laundry_seq},#{user_email},#{start_time},#{end_time},#{using_dt},#{pay_amount},#{pay_yn},#{store_name})
+	</insert>
+</mapper>

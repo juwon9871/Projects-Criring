@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+.chatbotMain {
+	position: fixed;
+	top: 85%;
+	left: 90%;
+	border: 5px solid #717275;
+	border-radius: 30px;
+	background-color: #f0f8ff;
+	z-index:10000;
+}
+
+.chatbotMain:hover, .scrolltop:hover {
+	background-color: #7cb8eb;
+}
+
+
+.scrolltop {
+	color: #717275;
+	position: fixed;
+	top: 77%;
+	left: 90%;
+	width: 65px;
+    height: 52px;
+	border: 5px solid #717275;
+	border-radius: 30px;
+	background-color: #f0f8ff;
+}
+
+.sel {
+	--bs-btn-padding-y: .25rem;
+	--bs-btn-padding-x: .5rem;
+	--bs-btn-font-size: 1rem;
+	margin-bottom: 0.5%;
+	width: 43%
+}
+
+#userSel1 {
+	line-height: 1;
+	width: 23%;
+	margin-left: 77%;
+	background-color: lightgray;
+	padding: 2% 1%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+#userSel2 {
+	line-height: 1;
+	background-color: lightgray;
+	width: 21%;
+	margin-left: 79%;
+	padding: 2% 1%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+#userSel3 {
+	line-height: 1;
+	background-color: lightgray;
+	width: 34%;
+	margin-left: 66%;
+	padding: 2% 1%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+#userSel4 {
+	line-height: 1;
+	margin-left: 60%;
+	background-color: lightgray;
+	width: 40%;
+	padding: 2% 1%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+#userSel5 {
+	line-height: 1;
+	margin-left: 74%;
+	background-color: lightgray;
+	width: 26%;
+	padding: 2% 1%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+@media ( max-width : 767px) {
+	.chatbotMain {
+		top: 80%;
+    	left: 75%;
+    	z-index: 10000;
+	}
+}
